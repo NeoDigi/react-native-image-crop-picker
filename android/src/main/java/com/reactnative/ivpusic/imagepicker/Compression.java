@@ -21,8 +21,8 @@ import java.io.IOException;
 class Compression {
 
     File compressImage(final Activity activity, final ReadableMap options, final String originalImagePath, final BitmapFactory.Options bitmapOptions) throws IOException {
-        Integer maxWidth = options.hasKey("compressImageMaxWidth") ? options.getInt("compressImageMaxWidth") : null;
-        Integer maxHeight = options.hasKey("compressImageMaxHeight") ? options.getInt("compressImageMaxHeight") : null;
+        Double maxWidth = options.hasKey("compressImageMaxWidth") ? options.getDouble("compressImageMaxWidth") : null;
+        Double maxHeight = options.hasKey("compressImageMaxHeight") ? options.getDouble("compressImageMaxHeight") : null;
         Double quality = options.hasKey("compressImageQuality") ? options.getDouble("compressImageQuality") : null;
 
         Boolean isLossLess = (quality == null || quality == 1.0);
@@ -53,15 +53,15 @@ class Compression {
 
         if (maxWidth != null) {
             Log.d("image-crop-picker", "Compressing image with max width " + maxWidth);
-            compressor.setMaxWidth(maxWidth);
+            compressor.setMaxWidth(maxWidth.floatValue());
         }
 
         if (maxHeight != null) {
             Log.d("image-crop-picker", "Compressing image with max height " + maxHeight);
-            compressor.setMaxHeight(maxHeight);
+            compressor.setMaxHeight(maxHeight.floatValue());
         }
 
-        File image = new File(originalImagePath); 
+        File image = new File(originalImagePath);
 
         String[] paths = image.getName().split("\\.(?=[^\\.]+$)");
         String compressedFileName = paths[0] + "-compressed";

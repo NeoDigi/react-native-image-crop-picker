@@ -1,3 +1,9 @@
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+
 apply plugin: 'com.android.library'
 
 def DEFAULT_COMPILE_SDK_VERSION   = 27
@@ -22,5 +28,5 @@ android {
 dependencies {
     compile 'com.facebook.react:react-native:+'
     compile 'com.github.yalantis:ucrop:2.2.2-native'
-    compile 'id.zelory:compressor:2.1.0'
+    compile 'com.github.aftabsikander:Compressor:master-SNAPSHOT'
 }
